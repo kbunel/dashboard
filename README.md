@@ -1,3 +1,3 @@
 # Dashboard
 
-- Daily Github's commits 
+- Daily Github's commits chart
