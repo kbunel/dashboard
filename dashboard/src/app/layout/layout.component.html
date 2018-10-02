@@ -1,3 +1,14 @@
-<p>
-  layout works!
-</p>
+  <div class="container-flex">
+    <div class="row" *ngFor="let empty of array ;let i = index">
+      <div class="col-sm" *ngFor="let empty2 of array ;let j = index">
+        {{i}} - {{j}}
+      </div>
+    </div>
+  </div>
+  <div class="widget-container">
+    <ng-template ngFor let-widget [ngForOf]="map">
+      <div class="widget" [ngStyle]="getPositionAndSize(widget)">
+        {{widget.name}}
+      </div>
+    </ng-template>
+  </div>
