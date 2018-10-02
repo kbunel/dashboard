@@ -1,0 +1,27 @@
+.container-flex {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .row {
+    flex: 1;
+    border: 1px solid black;
+
+    .col-sm {
+      border: 1px solid black;
+    }
+  }
+}
+.widget-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  .widget {
+    border: 1px solid red;
+    background: green;
+    position: absolute;
+  }
+}
