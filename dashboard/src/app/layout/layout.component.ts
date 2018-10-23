@@ -1,69 +1,20 @@
-import { Component } from '@angular/core';
+import { EditMode } from './../services/edit-mode.service';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  styleUrls: ['./layout.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class LayoutComponent {
-  public array: Array<void> = Array(12);
+export class LayoutComponent implements OnInit {
+  public inEdit: boolean = false;
 
-  public nbCol: number = 12;
-  public nbRow: number = 12;
+  public constructor(private editMode: EditMode) { }
 
-  public map: Array<Widget> = [
-    {
-      name: 'truc',
-      position: {
-        x: 0,
-        y: 2
-      },
-      size: {
-        x: 6,
-        y: 2
-      }
-    },
-    {
-      name: 'truc 2',
-      position: {
-        x: 0,
-        y: 0
-      },
-      size: {
-        x: 6,
-        y: 2
-      }
-    },
-    {
-      name: 'truc 3',
-      position: {
-        x: 6,
-        y: 0
-      },
-      size: {
-        x: 2,
-        y: 6
-      }
-    }
-  ];
-  public getPositionAndSize(widget: Widget): any {
-    const obj = {
-      left: (widget.position.x * 100 / this.nbCol) + '%',
-      top: (widget.position.y * 100 / this.nbRow) + '%',
-      width: (widget.size.x * 100 / this.nbCol) + '%',
-      height: (widget.size.y * 100 / this.nbRow) + '%',
-    };
-    return obj;
+  public ngOnInit() {
+    this.editMode.editChange.subscribe((mode: boolean) => {
+      this.inEdit = mode;
+    });
   }
-}
-
-interface Vector {
-  x: number;
-  y: number;
-}
-
-interface Widget {
-  name: String;
-  position: Vector;
-  size: Vector;
 }
