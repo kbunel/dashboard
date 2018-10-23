@@ -76,33 +76,20 @@ export class EditComponent implements OnInit {
       maxEnd.y = minStart.y + 1;
       minStart.y = pivot;
     }
-    const size = maxEnd.sub(minStart);
     return {
       start: minStart,
-      size: size,
+      size: maxEnd.sub(minStart),
     };
   }
 
   public getSelectionStyle() {
-    const start: Vector = new Vector(this.startPos.x, this.startPos.y);
-    const end: Vector = new Vector(this.endPos.x, this.endPos.y);
-    if (this.startPos.x >= this.endPos.x - 1) {
-      const pivot = end.x - 1;
-      end.x = start.x + 1;
-      start.x = pivot;
-    }
 
-    if (this.startPos.y >= this.endPos.y) {
-      const pivot = end.y - 1;
-      end.y = start.y + 1;
-      start.y = pivot;
-    }
-    const distance = end.sub(start);
+    const startAndSize = this.getStartAndSize(this.startPos, this.endPos);
     return  {
-      left: (start.x * 100 / NB_COL) + '%',
-      top: (start.y * 100  / NB_ROW) + '%',
-      width: (distance.x * 100 / NB_COL) + '%',
-      height: (distance.y * 100 / NB_ROW) + '%',
+      left: (startAndSize.start.x * 100 / NB_COL) + '%',
+      top: (startAndSize.start.y * 100  / NB_ROW) + '%',
+      width: (startAndSize.size.x * 100 / NB_COL) + '%',
+      height: (startAndSize.size.y * 100 / NB_ROW) + '%',
     };
   }
 }
