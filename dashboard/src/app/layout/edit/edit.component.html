@@ -1,0 +1,15 @@
+<div class="widget-container">
+  <ng-template ngFor let-row [ngForOf]="getRow()" let-i="index">
+    <ng-template ngFor let-col [ngForOf]="getCol()" let-j="index">
+      <div class="widget" [ngStyle]="getBoxStyle(i, j)" (click)="select(i, j)" (mouseenter)="hover(i+1,j+1)">
+        {{i}} - {{j}}
+      </div>
+    </ng-template>
+  </ng-template>
+  <div *ngIf="inSelection" class="selection" [ngStyle]="getSelectionStyle()" (click)="select()"></div>
+  <ng-template ngFor let-widget [ngForOf]="widgets">
+    <div class="widget" [ngStyle]="widget.getPositionAndSize()">
+      {{widget.name}}
+    </div>
+  </ng-template>
+</div>

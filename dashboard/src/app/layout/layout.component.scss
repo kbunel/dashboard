@@ -1,0 +1,19 @@
+.widget-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  .widget {
+    border: 1px solid red;
+    background: green;
+    position: absolute;
+  }
+
+  .selection {
+    background: blue;
+    opacity: 0.3;
+    position: absolute;
+  }
+}

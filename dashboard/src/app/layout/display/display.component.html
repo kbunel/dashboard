@@ -1,0 +1,7 @@
+<div class="widget-container">
+  <ng-template ngFor let-widget [ngForOf]="widgets">
+    <div class="widget" [ngStyle]="widget.getPositionAndSize()">
+      {{widget.name}}
+    </div>
+  </ng-template>
+</div>
